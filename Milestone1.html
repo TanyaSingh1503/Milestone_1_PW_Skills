@@ -1,0 +1,344 @@
+<!--19. Validate Password-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toggle Heading Text</title>
+</head>
+<body>
+
+<h1 id="heading">The most affordable learning platform</h1>
+<button id="toggleButton">Toggle Heading</button>
+
+<script>
+// Get references to the heading and button elements
+const heading = document.getElementById("heading");
+const toggleButton = document.getElementById("toggleButton");
+
+// Add event listener to the button for click events
+toggleButton.addEventListener("click", function() {
+  // Toggle the heading text between "The most affordable learning platform" and "PW Skills"
+  if (heading.textContent === "The most affordable learning platform") {
+    heading.textContent = "PW Skills";
+  } else {
+    heading.textContent = "The most affordable learning platform";
+  }
+});
+</script>
+
+</body>
+</html>
+
+<!--18.Change text on Button click-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<style>
+  .error {
+    color: red;
+  }
+  .success {
+    color: green;
+  }
+</style>
+</head>
+<body>
+
+<form id="loginForm">
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="email">
+  <br>
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password">
+  <br>
+  <button type="submit" id="submitButton">Submit</button>
+</form>
+<p id="message"></p>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent the form from submitting
+
+  // Get the values of email and password fields
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  // Validate email
+  const isValidEmail = email.includes("@");
+
+  // Validate password
+  const isValidPassword = password.length >= 8;
+
+  // Display error or success message
+  const messageElement = document.getElementById("message");
+  if (!isValidEmail || !isValidPassword) {
+    messageElement.textContent = "Invalid email or password!";
+    messageElement.className = "error";
+  } else {
+    messageElement.textContent = "Valid email and password!";
+    messageElement.className = "success";
+  }
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+<!--21. TODO App-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple To-Do App</title>
+<style>
+  #todoList {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Simple To-Do App</h2>
+<input type="text" id="todoInput" placeholder="Enter your TODO item">
+<button id="addTodoButton">Add TODO</button>
+
+<ul id="todoList">
+  <!-- To-do items will be added here dynamically -->
+</ul>
+
+<script>
+document.getElementById("addTodoButton").addEventListener("click", function() {
+  // Get the input value
+  const todoItem = document.getElementById("todoInput").value.trim();
+  
+  // Clear the input field
+  document.getElementById("todoInput").value = "";
+
+  // If the input value is not empty
+  if (todoItem !== "") {
+    // Create a new list item element
+    const listItem = document.createElement("li");
+    listItem.textContent = todoItem;
+
+    // Append the new list item to the todoList
+    document.getElementById("todoList").appendChild(listItem);
+  }
+});
+</script>
+
+</body>
+</html>
+
+
+<!--22. Progress Bar-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Progress Bar</title>
+<style>
+  #progressBarContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #f0f0f0;
+    z-index: 9999;
+  }
+
+  #progressBar {
+    height: 100%;
+    background-color: #4caf50;
+    width: 0;
+  }
+</style>
+</head>
+<body>
+
+<div id="progressBarContainer">
+  <div id="progressBar"></div>
+</div>
+
+<!-- Your page content goes here -->
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula mauris in eros fermentum, vel pharetra elit consequat. Nulla tincidunt lacus quis velit ultrices vulputate. Quisque consectetur eros id velit placerat consequat. Nullam at varius enim, in varius nunc. Nulla facilisi. Ut nec eros ut orci commodo feugiat id et eros. Curabitur laoreet magna sit amet metus facilisis, nec tincidunt dui vestibulum. Donec nec pulvinar risus. Sed ut elit velit. Nam non turpis et dolor congue blandit. </p>
+<script>
+    // Function to calculate and update the progress bar width based on scroll position
+    function updateProgressBar() {
+      const scrollPosition = window.scrollY; // Get the current scroll position
+      const totalHeight = document.body.scrollHeight - window.innerHeight; // Get the total scrollable height
+      const progress = (scrollPosition / totalHeight) * 100; // Calculate the scroll progress percentage
+      document.getElementById("progressBar").style.width = progress + "%"; // Update the width of the progress bar
+    }
+    
+    // Add event listener to update the progress bar on scroll
+    window.addEventListener("scroll", updateProgressBar);
+    </script>
+    
+    </body>
+    </html>
+
+
+    <!--23. Change the color on click-->
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Change Background Color</title>
+</head>
+<body>
+
+<button id="changeColorButton">Change Color</button>
+
+<script>
+// Array of colors
+const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff", "#000000", "#ffffff"];
+
+// Function to change the background color of the page
+function changeBackgroundColor() {
+  // Generate a random index to select a color from the array
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  
+  // Get the selected color from the array
+  const selectedColor = colors[randomIndex];
+  
+  // Change the background color of the page
+  document.body.style.backgroundColor = selectedColor;
+}
+
+// Add event listener to the button for click events
+document.getElementById("changeColorButton").addEventListener("click", changeBackgroundColor);
+</script>
+
+</body>
+</html>
+
+
+
+
+<!--24. Text Highlighting-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Highlight Long Words</title>
+<style>
+  .highlight {
+    background-color: yellow;
+  }
+</style>
+</head>
+<body>
+
+<p id="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ultricies vestibulum consectetur.</p>
+
+<script>
+// Get the paragraph element
+const paragraph = document.getElementById("paragraph");
+
+// Get the text content of the paragraph
+const textContent = paragraph.textContent;
+
+// Split the text content into words
+const words = textContent.split(/\s+/);
+
+// Iterate through the words
+words.forEach(word => {
+  // Check if the word has more than 8 characters
+  if (word.length > 8) {
+    // Create a span element for the word
+    const span = document.createElement("span");
+    span.textContent = word;
+    span.classList.add("highlight"); // Add the highlight class to the span
+    // Replace the word in the paragraph with the highlighted span
+    paragraph.innerHTML = paragraph.innerHTML.replace(word, span.outerHTML);
+  }
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+<!--24. Move the image-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Move Image with Arrow Keys</title>
+<style>
+  #container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+  }
+  #image {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    top: 0;
+    left: 0;
+  }
+</style>
+</head>
+<body>
+
+<div id="container">
+  <div id="image"></div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  const container = document.getElementById("container");
+  const image = document.getElementById("image");
+
+  // Initial position of the image
+  let posX = 0;
+  let posY = 0;
+
+  // Function to update the position of the image
+  function updatePosition() {
+    image.style.left = posX + "px";
+    image.style.top = posY + "px";
+  }
+
+  // Event listener for arrow key presses
+  document.addEventListener("keydown", function(event) {
+    switch (event.key) {
+      case "ArrowUp":
+        posY -= 10; // Move up
+        break;
+      case "ArrowDown":
+        posY += 10; // Move down
+        break;
+      case "ArrowLeft":
+        posX -= 10; // Move left
+        break;
+      case "ArrowRight":
+        posX += 10; // Move right
+        break;
+    }
+    // Update the position of the image
+    updatePosition();
+  });
+});
+
+</script>
+</body>
+</html>
